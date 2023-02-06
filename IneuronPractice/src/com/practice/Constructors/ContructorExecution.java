@@ -16,7 +16,7 @@ class Parent{
 class Child extends Parent{
 	int x, y;
 	Child(){
-		//Super() --> if we are not using this() method then by default super() method will be called where parent constructor will get executed,
+		//super() --> if we are not using this() method then by default super() method will be called where parent constructor will get executed,
                      // so a & b values will get initialized
 		x = 100;
 		y = 200;
@@ -40,7 +40,7 @@ public class ContructorExecution {
 }
 //Output :- 
 /*
- * Inside Parent Constructor 
+ * Inside Parent Constructor --> these is printing because of super method call in child constructor
  * Inside Child Constructor 
  * 10 20 100 200
  */
