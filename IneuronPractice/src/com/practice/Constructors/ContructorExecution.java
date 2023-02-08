@@ -23,6 +23,7 @@ class Child extends Parent{
 		System.out.println("Inside Child Constructor");
 	}
 	Child(int x, int y){
+//		super(10,20); --> need to call super method explicitly to call parameterized constructor in Parent class
 		this.x = x;
 		this.y = y;
 		System.out.println("Inside Child parametarized Constructor");
