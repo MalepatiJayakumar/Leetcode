@@ -21,6 +21,7 @@ public class TestFunction {
 		Function<String, Integer> fun = name -> {
 			if (name != null)
 				return name.length();
+			return 0;
 		};
 		System.out.println(fun.apply("sachin"));
 	}

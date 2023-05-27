@@ -21,7 +21,6 @@ class Display3 {
 			} catch (Exception e) {
 
 			}
-			InputStreamSource input= new InputStreamSource();
 		}
 	}
 }
