@@ -1,5 +1,6 @@
 package com.Practice.Arrays;
-
+import java.util.List;
+import java.util.ArrayList;
 public class MaxPairsPossible {
 	public static void main(String[] args) {
 		int[] nums = { 0, 0, 1, 1, 2, 2 };
@@ -28,6 +29,9 @@ public class MaxPairsPossible {
 		}
 		int rem = nums.length - (pairs * 2);
 		int[] output = { pairs, rem };
+		List<String> list1= new ArrayList<>();
+		List<String> list2= new ArrayList<>();
+		list.containsAll(list2);
 		return output;
 	}
 
