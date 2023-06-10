@@ -3,12 +3,12 @@ package com.practice.Generics;
 import java.util.Arrays;
 import java.util.List;
 
-class Response<T> {
+class Response<E> {
 	Boolean success = Boolean.FALSE;
 	String message;
-	T output;
+	E output; // count of values , values , boolean true or false
 
-	Response(Boolean success, String message, T output) {
+	Response(Boolean success, String message, E output) {
 		this.success = success;
 		this.message = message;
 		this.output = output;
@@ -22,7 +22,7 @@ class Response<T> {
 		return message;
 	}
 
-	public T getOutput() {
+	public E getOutput() {
 		return output;
 	}
 }
