@@ -13,13 +13,17 @@ public class GetAllFilesInDirectory {
 		for (String name : names) {
 			File f = new File(file,name);
 			if(f.isDirectory()) {
+				/* Increment dirCount if it an directory */
 				dirCount++;
 			}
 			else if(f.isFile()) {
+				/* Increment fileCount if it is an File object */
 				fileCount++;
 			}
+			/* Printing file or directory names */
 			System.out.println(name);
 		}
+		/* printing count of files & directories count seperately */
 		System.out.println(fileCount+" files & "+dirCount+" directories present in Desktop");
 	}
 }
