@@ -1,6 +1,8 @@
 package com.practice.bean;
 
-public class Account {
+import java.io.Serializable;
+
+public class Account implements Serializable {
 	
 	String accName;
 	String bankName;
@@ -30,5 +32,10 @@ public class Account {
 	}
 	public String  getAccountType() {
 		return accType;
+	}
+	
+	@Override
+	public String toString() {
+		return "Account [accName=" + accName + ", bankName=" + bankName + ", accType=" + accType + "]";
 	}
 }

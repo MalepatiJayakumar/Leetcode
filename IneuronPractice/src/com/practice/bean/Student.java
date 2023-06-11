@@ -5,7 +5,6 @@ public class Student {
 	private Integer id;
 	private String name;
 	private String address;
-	
 	Branch branch;
 
 	public Integer getId() {
