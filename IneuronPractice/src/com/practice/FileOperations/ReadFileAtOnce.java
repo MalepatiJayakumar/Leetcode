@@ -17,5 +17,6 @@ public class ReadFileAtOnce {
 		for(char data : ch) {
 			System.out.println(data);
 		}
+		fr.close();
 	}
 }

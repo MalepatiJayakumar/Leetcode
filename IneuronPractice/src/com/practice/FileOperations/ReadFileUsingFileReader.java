@@ -12,5 +12,6 @@ public class ReadFileUsingFileReader {
 			System.out.println((char)i);
 			i = fr.read();
 		}
+		fr.close();
 	}
 }

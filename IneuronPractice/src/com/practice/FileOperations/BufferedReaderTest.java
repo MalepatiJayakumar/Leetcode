@@ -1,8 +1,8 @@
 package com.practice.FileOperations;
 
-import java.io.IOException;
-import java.io.FileReader;
 import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 
 /* Using BufferedReader we can read the whole line at one go */
 public class BufferedReaderTest {
@@ -15,5 +15,6 @@ public class BufferedReaderTest {
 			System.out.println(line);
 			line = br.readLine();
 		}
+		br.close();
 	}
 }
