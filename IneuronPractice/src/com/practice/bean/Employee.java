@@ -7,7 +7,7 @@ public class Employee {
 	private String empRole;
 	
 	//one-one mapping (Has-A relationship)
-	private Account account;
+	private BankAccount account;
 	
 	public String getEmpName() {
 		return empName;
@@ -33,15 +33,15 @@ public class Employee {
 		this.empRole = empRole;
 	}
 
-	public Account getAccount() {
+	public BankAccount getAccount() {
 		return account;
 	}
 
-	public void setAccount(Account account) {
+	public void setAccount(BankAccount account) {
 		this.account = account;
 	}
 
-	public Employee(String empName, Integer empId, String empRole, Account account) {
+	public Employee(String empName, Integer empId, String empRole, BankAccount account) {
 		this.empName= empName;
 		this.empId= empId;
 		this.empRole= empRole;

@@ -2,40 +2,43 @@ package com.practice.bean;
 
 import java.io.Serializable;
 
-public class Account implements Serializable {
+public class Account implements Serializable{
+	private String userName;
+	private transient String password;
+	private String email;
 	
-	String accName;
-	String bankName;
-	String accType;
-	
-	public Account(String accName, String bankName, String accType) {
-		this.accName= accName;
-		this.bankName= bankName;
-		this.accType= accType;
-	}
-	
-	public void setAccName(String accName) {
-		this.accName= accName;
-	}
-	public void setBankName(String bankName) {
-		this.bankName= bankName;
-	}
-	public void setAccType(String accType) {
-		this.accType= accType;
+	public Account(String userName , String password , String email) {
+		this.userName = userName;
+		this.password = password;
+		this.email    = email;
 	}
 	
-	public String getAccName() {
-		return accName;
+	public String getUserName() {
+		return userName;
 	}
-	public String getBankName() {
-		return bankName;
+
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
-	public String  getAccountType() {
-		return accType;
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 	
 	@Override
 	public String toString() {
-		return "Account [accName=" + accName + ", bankName=" + bankName + ", accType=" + accType + "]";
+		return "Account [userName=" + userName + ", password=" + password + ", email=" + email + "]";
 	}
 }

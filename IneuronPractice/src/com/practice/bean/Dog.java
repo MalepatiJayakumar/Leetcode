@@ -4,8 +4,8 @@ import java.io.Serializable;
 
 public class Dog implements Serializable{
 
-	private Integer age;
-	private String name;
+	private static transient Integer age;
+	private transient String name;
 	private String favorateFood;
 
 	public Dog(Integer age, String name, String favorateFood) {

@@ -8,7 +8,7 @@ public class TestApp {
 		
 		//Constructor injection(One-One mapping example)
 		//Dependent object
-		Account account= new Account("Jai", "Axis", "Savings");
+		BankAccount account= new BankAccount("Jai", "Axis", "Savings");
         //Target object
 		Employee employee= new Employee("jai",5,"ASE1",account);
 		employee.printEmployeeOneToOne();
