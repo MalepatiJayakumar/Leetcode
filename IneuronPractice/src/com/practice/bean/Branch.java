@@ -1,10 +1,13 @@
 package com.practice.bean;
 
-public class Branch {
+import java.io.Serializable;
+
+public class Branch implements Serializable{
 	
 	private Integer branchId;
 	private String branchName;
 	private String branchLocation;
+	
 	public Integer getBranchId() {
 		return branchId;
 	}
