@@ -12,22 +12,25 @@ class Login1 implements Serializable {
 
 	String userName = "JaiKumar";
 	transient String password = "password";
-	transient int pin         = 1111;
+	transient int pin = 1111;
+	transient Long data = 123456L;
 
 	private void writeObject(ObjectOutputStream oos) throws Exception {
 		System.out.println("Inside readObject in Login");
 		oos.defaultWriteObject();
-		oos.writeObject("123"+password);
-		oos.writeInt(1111+1111);
+		oos.writeObject("123" + password);
+		oos.writeInt(1111 + 1111);
+		oos.writeLong(data);
 	}
 
 	private void readObject(ObjectInputStream ois) throws Exception {
 		System.out.println("Inside readObject in Login");
 		ois.defaultReadObject();
-		String ePWD = (String)ois.readObject();
+		String ePWD = (String) ois.readObject();
 		password = ePWD.substring(3);
 		int ePin = ois.readInt();
-		pin = ePin-1112;
+		pin = ePin - 1112;
+
 	}
 }
 
