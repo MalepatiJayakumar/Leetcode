@@ -30,10 +30,9 @@ class Login1 implements Serializable {
 		password = ePWD.substring(3);
 		int ePin = ois.readInt();
 		pin = ePin - 1112;
-
 	}
 }
-
+	
 public class CustomSerializationForMultiObjects {
 	public static void main(String[] args) throws Exception {
 		String filePath = FileHelper.folderPath + "encryCustom.ser";
