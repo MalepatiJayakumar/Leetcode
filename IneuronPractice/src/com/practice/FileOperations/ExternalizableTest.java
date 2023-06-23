@@ -10,10 +10,19 @@ import java.io.ObjectOutput;
 import java.io.Externalizable;
 
 class Login4 implements Externalizable {
-	String userName = "JaiKumar";
-	String password = "password";
-	Long year = 2001L;
+	
+	public static Long serialVersionUID = 1L;
+	
+	String userName;
+	String password;
+	Long year;
 
+	public Login4(String userName , String password , Long year) {
+		System.out.println("args constructor in Login4 class");
+		this.userName = userName;
+		this.password = password;
+		this.year     = year;  
+	}
 	public Login4() {
 		System.out.println("No-args constructor in Login4 class");
 	}
@@ -21,11 +30,15 @@ class Login4 implements Externalizable {
 	@Override
 	public void writeExternal(ObjectOutput out) throws IOException {
 		System.out.println("Inside writeExternal method in Login4");
+		out.writeObject(userName);
+		out.writeObject(year);
 	}
 
 	@Override
 	public void readExternal(ObjectInput in) throws IOException, ClassNotFoundException {
 		System.out.println("Inside readExternal method in Login4");
+		userName = (String)in.readObject();
+		year     = (Long)in.readObject();
 	}
 }
 
@@ -34,7 +47,7 @@ public class ExternalizableTest {
 
 		String filePath = FileHelper.folderPath + "testExternalizable.ser";
 
-		Login4 login = new Login4();
+		Login4 login = new Login4("jaikumar","password",2001L);
 
 		/* Serialization Started */
 		FileOutputStream fos = new FileOutputStream(filePath);

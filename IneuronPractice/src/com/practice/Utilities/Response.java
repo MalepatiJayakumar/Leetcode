@@ -1,6 +1,8 @@
 package com.practice.Utilities;
 
-public class Response<T> {
+import java.io.Serializable;
+
+public class Response<T> implements Serializable{
 	private Boolean success = Boolean.FALSE;
 	private String message;
 	private T output;
@@ -34,5 +36,9 @@ public class Response<T> {
 	public void setOutput(T output) {
 		this.output = output;
 	}
-
+	
+	@Override
+	public String toString() {
+		return "Response [success=" + success + ", message=" + message + ", output=" + output + "]";
+	}
 }
