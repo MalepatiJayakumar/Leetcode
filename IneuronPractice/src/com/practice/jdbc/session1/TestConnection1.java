@@ -13,7 +13,7 @@ public class TestConnection1 {
 		ResultSet  resultSet  = null;
 		try {
 			/* Step 1:- Load and register the Driver */
-			Class.forName("com.mysql.cj.jdbc.Driver");
+//			Class.forName("com.mysql.cj.jdbc.Driver");
 			System.out.println("Driver loaded successfully .. ");
 
 			/*Step 2 :- Establish the Connection with database */
@@ -36,6 +36,7 @@ public class TestConnection1 {
 			System.out.println("Id\tfName\tmName\tlName\tAge\tCity");
 			while(resultSet.next()) {
 				Long rollNumber   = resultSet.getLong(1);
+				//Long rollNumber   = resultSet.getLong("roll_number"); // we can also use column name to get the value
 				String firstName  = resultSet.getString(2);
 				String middleName = resultSet.getString(3);
 				String lastName   = resultSet.getString(4);
@@ -43,9 +44,11 @@ public class TestConnection1 {
 				String city       = resultSet.getString(6);
 				System.out.println(rollNumber+"\t"+firstName+"\t"+middleName+"\t"+lastName+"\t"+age+"\t"+city);
 			}
-		}catch(ClassNotFoundException e) {
-			System.out.println("class Not found :: "+e);
-		}catch(SQLException e) {
+		}
+//		catch(ClassNotFoundException e) {
+//			System.out.println("class Not found :: "+e);
+//		}
+		catch(SQLException e) {
 			System.out.println("Sql exception  :: "+e);
 		}catch(Exception e) {
 			System.out.println("Exception :: "+e);
@@ -53,6 +56,8 @@ public class TestConnection1 {
 		finally{
 			if(connection != null) {
 				try {
+					resultSet.close();
+					statement.close();
 					connection.close();
 					System.out.println("Connection has been closed");
 				}catch(Exception e) {
