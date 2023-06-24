@@ -6,7 +6,7 @@ import java.sql.DriverManager;
 import java.sql.Statement;
 import java.util.Scanner;
 
-public class JDBC4DynamicValueInsertion1 {
+public class Jdbc4DynamicValueInsertion1 {
 
 	public static void main(String[] args) throws SQLException {
 

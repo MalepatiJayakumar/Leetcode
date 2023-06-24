@@ -5,7 +5,7 @@ import java.sql.Statement;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class JDBC2TestDelete {
+public class Jdbc2TestDelete {
 	public static void main(String[] args) throws SQLException {
 		Connection connection = null;
 

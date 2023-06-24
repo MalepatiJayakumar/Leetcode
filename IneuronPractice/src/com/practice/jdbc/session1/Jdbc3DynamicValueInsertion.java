@@ -6,7 +6,7 @@ import java.sql.Statement;
 import java.util.Scanner;
 import java.sql.SQLException;
 
-public class JDBC3DynamicValueInsertion {
+public class Jdbc3DynamicValueInsertion {
 	
 	public static void main(String[] args) throws SQLException {
 		
