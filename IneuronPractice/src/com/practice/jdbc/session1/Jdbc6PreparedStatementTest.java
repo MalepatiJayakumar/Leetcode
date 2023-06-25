@@ -5,7 +5,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-public class jdbc6PreparedStatementTest {
+public class Jdbc6PreparedStatementTest {
 	
 	public static void main(String[] args) {
 		Connection connection   = null;

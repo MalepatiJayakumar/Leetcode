@@ -15,7 +15,7 @@ import java.io.IOException;
  * @author JaiKumar
  * 
  */
-public class jdbc8SaveDateTest {
+public class Jdbc8SaveDateTest {
 	static Scanner scan = new Scanner(System.in);
 
 	public static void main(String[] args) {

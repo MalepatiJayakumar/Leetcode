@@ -12,7 +12,7 @@ import java.io.IOException;
  * Get all the values from DB & print using jbdc Util class,
  *         remove redunant code from main method
  */
-public class jdbc5GetValues {
+public class Jdbc5GetValues {
 
 	public static void main(String[] args) {
 		Connection connection = null;
