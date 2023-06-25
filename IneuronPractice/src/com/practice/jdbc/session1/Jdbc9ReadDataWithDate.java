@@ -17,11 +17,11 @@ public class Jdbc9ReadDataWithDate {
 
 		try {
 			connection = JdbcUtil.getConnection();
-			if(connection != null) {
+			if (connection != null) {
 				String query = "SELECT user_name,email,dob FROM `user` WHERE is_deleted =0";
 				pstmt = connection.prepareStatement(query);
 				resultSet = pstmt.executeQuery();
-				if(resultSet != null) {
+				if (resultSet != null) {
 					readResult(resultSet);
 					System.out.println("Data read successfully...");
 				}
@@ -29,7 +29,7 @@ public class Jdbc9ReadDataWithDate {
 		} catch (SQLException | IOException e) {
 			System.out.println("Exception occured while reading data from Database");
 		} catch (Exception e) {
-			
+
 		} finally {
 			try {
 				JdbcUtil.cleanUp(connection, pstmt, resultSet);
@@ -42,7 +42,6 @@ public class Jdbc9ReadDataWithDate {
 	private static void readResult(ResultSet resultSet) throws SQLException {
 		System.out.println("name\temail\t\tdob");
 		while (resultSet.next()) {
-			// user_name,email,dob
 			String name = resultSet.getString(1);
 			String email = resultSet.getString(2);
 			java.sql.Date dob = resultSet.getDate(3);

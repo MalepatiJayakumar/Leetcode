@@ -13,8 +13,7 @@ public class JdbcUtil {
 
 	public static Connection getConnection() throws SQLException, IOException {
 		/* Take url , userName & password from application.properties file */
-		FileInputStream fis = new FileInputStream(
-				"C:\\Users\\malep\\git\\repository\\IneuronPractice\\application.properties");
+		FileInputStream fis = new FileInputStream("application.properties");
 		Properties properties = new Properties();
 		properties.load(fis);
 
