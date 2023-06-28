@@ -31,7 +31,7 @@ public class MaxPairsPossible {
 		int[] output = { pairs, rem };
 		List<String> list1= new ArrayList<>();
 		List<String> list2= new ArrayList<>();
-		list.containsAll(list2);
+		list1.containsAll(list2);
 		return output;
 	}
 
