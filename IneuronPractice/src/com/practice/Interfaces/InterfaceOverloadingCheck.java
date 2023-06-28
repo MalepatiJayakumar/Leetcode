@@ -6,7 +6,7 @@ interface Left{
 interface Right{
 	public int m1();
 }
-
+/*
 class TestImpl implements Left, Right {
 
 	// Compiler only checks for method signature(m1()) so, implementing same method
@@ -22,6 +22,8 @@ class TestImpl implements Left, Right {
 	}
 
 }
+
+*/
 
 public class InterfaceOverloadingCheck {
 	
