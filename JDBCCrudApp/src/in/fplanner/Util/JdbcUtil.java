@@ -1,14 +1,13 @@
-package com.practice.jdbc.session1;
+package in.fplanner.Util;
 
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Properties;
-
-import com.mysql.cj.jdbc.MysqlConnectionPoolDataSource;
 
 public class JdbcUtil {
 
@@ -18,16 +17,8 @@ public class JdbcUtil {
 		Properties properties = new Properties();
 		properties.load(fis);
 
-		//For every request new connection object will be created which impacts performance
-//		return DriverManager.getConnection(properties.getProperty("url"), properties.getProperty("userName"),
-//				properties.getProperty("password"));
-		
-		//Here certain number of connections will be predefined where connection will be reused with creating and deleting
-		MysqlConnectionPoolDataSource dataSource = new MysqlConnectionPoolDataSource();
-		dataSource.setURL(properties.getProperty("url"));
-		dataSource.setUser(properties.getProperty("userName"));
-		dataSource.setPassword(properties.getProperty("password"));
-		return dataSource.getConnection();
+		return DriverManager.getConnection(properties.getProperty("url"), properties.getProperty("userName"),
+				properties.getProperty("password"));
 	}
 
 	public static void cleanUp(Connection connection, Statement statement, ResultSet resultSet) throws SQLException {
