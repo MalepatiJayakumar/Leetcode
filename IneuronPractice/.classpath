@@ -11,5 +11,6 @@
 	<classpathentry kind="lib" path="C:/Program Files/jars/commons-io-2.8.0.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Excel_UTIL"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/CSV_UTIL"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/HIKARI_CP"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
