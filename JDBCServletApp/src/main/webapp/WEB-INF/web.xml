@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
+  <servlet>
+  	<servlet-name>TestApp</servlet-name>
+    <servlet-class>in.practice.controller.TestApp</servlet-class>
+    <init-param>
+    	<param-name>url</param-name>
+    	<param-value>jdbc:mysql://localhost:3306/localhost</param-value>
+    </init-param>
+    <init-param>
+    	<param-name>username</param-name>
+    	<param-value>root</param-value>
+    </init-param>
+    <init-param>
+    	<param-name>password</param-name>
+    	<param-value>Reddy@3816</param-value>
+    </init-param>
+    <!-- load on start up will load all the components at the first time so that from second time it won't load the whole static objects & servlets -->
+    <load-on-startup>1</load-on-startup>  
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>TestApp</servlet-name>
+    <url-pattern>/test</url-pattern>
+  </servlet-mapping>
+</web-app>
