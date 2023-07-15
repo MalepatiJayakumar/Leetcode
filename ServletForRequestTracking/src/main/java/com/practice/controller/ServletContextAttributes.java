@@ -36,6 +36,7 @@ public class ServletContextAttributes extends HttpServlet {
 			out.println("<tr><td>"+attributeName+"</td><td>"+value+"</td><tr>");
 		}
 		out.println("</table></center></body></html>");
+		out.close();
 	}
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
