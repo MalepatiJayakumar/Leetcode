@@ -46,7 +46,7 @@ public class EmployeeDAOImpl implements IEmployeeDAO {
 	}
 
 	@Override
-	public Employee searchEmployee(Long id) throws IOException {
+	public Employee searchEmployee(Long id) throws IOException, SQLException {
 		Employee emp =null;
 		try {
 			connection = JdbcUtil.getConnection();
@@ -61,10 +61,12 @@ public class EmployeeDAOImpl implements IEmployeeDAO {
 					String address = resultSet.getString(4);
 					Double salary = resultSet.getDouble(5);
 					emp = new Employee(name,age,address,salary);
+					emp.setId(resultSet.getLong(1));
 				}
 			}
 		}catch(SQLException e) {
 			System.out.println("Inside searchEmployee in EmployeeDAOImpl >> exception occurred while searching for employee :: "+e);
+			throw e;
 		}finally {
 			try {
 				JdbcUtil.cleanUp(connection,pstmt,resultSet);
@@ -76,12 +78,57 @@ public class EmployeeDAOImpl implements IEmployeeDAO {
 	}
 
 	@Override
-	public String updateEmployee(Employee employee) {
-		return null;
+	public String updateEmployee(Employee employee) throws IOException, SQLException {
+		try {
+			connection = JdbcUtil.getConnection();
+			if(connection != null) {
+				String query="update employee set name=?,age=?,address=?,salary=? where pk_id=?";
+				pstmt = connection.prepareStatement(query);
+				pstmt.setString(1,employee.getName());
+				pstmt.setInt(2,employee.getAge());
+				pstmt.setString(3,employee.getAddress());
+				pstmt.setDouble(4,employee.getSalary());
+				pstmt.setLong(5,employee.getId());
+				Integer rowsAffected = pstmt.executeUpdate();
+				if(rowsAffected > 0) {
+					return Constants.SUCCESS;
+				}
+			}
+		}catch(SQLException e) {
+			System.out.println("Inside updateEmployee in EmployeeDAOImpl >> exception occurred while updating an employee :: "+e);
+			throw e;
+		}finally {
+			try {
+				JdbcUtil.cleanUp(connection,pstmt,resultSet);
+			}catch(SQLException e) {
+				System.out.println("Inside updateEmployee in EmployeeDAOImpl >> exeception while closing resource :: "+e);
+			}
+		}
+		return Constants.FAILED;
 	}
 
 	@Override
-	public String deleteEmployee(Long id) {
-		return null;
+	public String deleteEmployee(Long id) throws IOException {
+		try {
+			connection = JdbcUtil.getConnection();
+			if(connection != null) {
+				String query = "update employee set is_deleted = 1 where pk_id=?";
+				pstmt = connection.prepareStatement(query);
+				pstmt.setLong(1,id);
+				Integer rowsAffected = pstmt.executeUpdate();
+				if(rowsAffected > 0) {
+					return Constants.SUCCESS;
+				}
+			}
+		}catch(SQLException e) {
+			System.out.println("Inside deleteEmployee in EmployeeDAOImpl >> exception occurred while deleting an employee :: "+e);
+		}finally {
+			try {
+				JdbcUtil.cleanUp(connection,pstmt,resultSet);
+			}catch(SQLException e) {
+				System.out.println("Inside deleteEmployee in EmployeeDAOImpl >> exeception while closing resource :: "+e);
+			}
+		}
+		return Constants.FAILED;
 	}
 }

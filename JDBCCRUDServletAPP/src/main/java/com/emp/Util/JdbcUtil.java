@@ -23,7 +23,7 @@ public class JdbcUtil {
 	public static Connection getConnection() throws IOException, SQLException {
 		HikariDataSource dataSource = null;
 		try {
-			HikariConfig config = new HikariConfig("C:\\Users\\malep\\eclipse-workspace\\JDBCCRUDServletAPP\\application.properties");
+			HikariConfig config = new HikariConfig("C:\\Users\\malep\\git\\repository\\JDBCCRUDServletAPP\\application.properties");
 			dataSource = new HikariDataSource(config);
 			return dataSource.getConnection();
 //			FileInputStream fis = new FileInputStream("C:\\Users\\malep\\eclipse-workspace\\JDBCCRUDServletAPP\\application.properties");

@@ -20,7 +20,7 @@ public class EmployeeServiceImpl implements IEmployeeService {
 	}
 
 	@Override
-	public Employee searchEmployee(Long id) throws IOException {
+	public Employee searchEmployee(Long id) throws IOException, SQLException {
 		if (employeeDAO == null) {
 			employeeDAO = EmployeeDAOFactory.getEmployeeService();
 		}
@@ -28,7 +28,7 @@ public class EmployeeServiceImpl implements IEmployeeService {
 	}
 
 	@Override
-	public String updateEmployee(Employee employee) {
+	public String updateEmployee(Employee employee) throws IOException, SQLException {
 		if (employeeDAO == null) {
 			employeeDAO = EmployeeDAOFactory.getEmployeeService();
 		}
@@ -36,7 +36,7 @@ public class EmployeeServiceImpl implements IEmployeeService {
 	}
 
 	@Override
-	public String deleteEmployee(Long id) {
+	public String deleteEmployee(Long id) throws IOException {
 		if (employeeDAO == null) {
 			employeeDAO = EmployeeDAOFactory.getEmployeeService();
 		}

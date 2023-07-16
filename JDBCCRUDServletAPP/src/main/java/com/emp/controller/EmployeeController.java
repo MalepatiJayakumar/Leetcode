@@ -19,7 +19,7 @@ import com.emp.servicefactory.EmployeeServiceFactory;
 @WebServlet("/controller/*")
 public class EmployeeController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
+	private static Long id = null;
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
@@ -47,13 +47,31 @@ public class EmployeeController extends HttpServlet {
 			addEmployee(emp,employeeService,response);
 		} else if (pathInfo.endsWith(Constants.search)) {
 			searchEmployee(Long.parseLong(request.getParameter("empId")),employeeService,response);
-		} else if (pathInfo.endsWith(Constants.update)) {
-			updateEmployee(null,employeeService);
+		} else if (pathInfo.endsWith(Constants.edit)) {
+			id = Long.parseLong(request.getParameter("empId"));
+			getEmployee(id,employeeService,response);
 		} else if (pathInfo.endsWith(Constants.delete)) {
-			deleteEmployee(null,employeeService);
+			deleteEmployee(Long.parseLong(request.getParameter("empId")),employeeService,response);
+		}else if(pathInfo.endsWith(Constants.update)) {
+			Employee emp = new Employee(request.getParameter("name"), Integer.parseInt(request.getParameter("age")),
+					request.getParameter("address"), Double.parseDouble(request.getParameter("salary")));
+			emp.setId(id);
+			updateEmployee(emp,employeeService,response);
 		}
 	}
 	
+	public void updateEmployee(Employee employee, IEmployeeService employeeService, HttpServletResponse response) throws IOException, SQLException {
+		PrintWriter out = response.getWriter();
+		if(Objects.nonNull(employee)) {
+			String output = employeeService.updateEmployee(employee);
+			if(Constants.SUCCESS.equalsIgnoreCase(output)) {			
+				out.println("<center><form style='color:green' align='center'><h1 >Successfully Updated Employee</h1></form></center>");
+			}else {
+				out.println("<center><form style='color:red' align='center'><h1 >Updating Employee as been failed,please try Again</h1></form></center>");
+			}
+		}
+	}
+
 	public void addEmployee(Employee emp , IEmployeeService employeeService, HttpServletResponse response) throws SQLException, IOException {
 		String output = employeeService.addEmployee(emp);
 		response.setContentType("text/html");
@@ -66,12 +84,13 @@ public class EmployeeController extends HttpServlet {
 		out.close();
 	}
 	
-	public void searchEmployee(Long id , IEmployeeService employeeService,HttpServletResponse response) throws IOException {
+	public void searchEmployee(Long id , IEmployeeService employeeService,HttpServletResponse response) throws IOException, SQLException {
 		Employee emp = employeeService.searchEmployee(id);
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
 		if(Objects.nonNull(emp)) {
 			out.println("<center>");
+			out.println("<br/><br/>");
 			out.println("<h1>Employee Details</h1>");
 			out.println("<table border=5px>");
 			out.println("<tr><th>Name</th><td>"+emp.getName()+"</td></tr>");
@@ -86,11 +105,40 @@ public class EmployeeController extends HttpServlet {
 		out.close();
 	}
 	
-	public void updateEmployee(Employee emp , IEmployeeService employeeService) {
-		
+	public void getEmployee(Long id, IEmployeeService employeeService, HttpServletResponse response)
+			throws IOException, SQLException {
+		PrintWriter out = response.getWriter();
+		Employee emp = employeeService.searchEmployee(id);
+		response.setContentType("text/html");
+		if (Objects.nonNull(emp)) {
+			out.println("<form method=\"get\" action='./controller/update'>");
+			out.println("<center><h1>Employee Details</h1><table border=5px><tr><td>ID</td><td>" + emp.getId()
+					+ "</td></tr>");
+			out.println("<tr><th>Name</th><td><input type='text' name='name' value=" + emp.getName() + "></input></td></tr>");
+			out.println("<tr><th>Age</th><td><input type='Number' name='age' value=" + emp.getAge() + "></input></td></tr>");
+			out.println("<tr><th>Address</th><td><input type='text' name='address' value=" + emp.getAddress() + "></input></td></tr>");
+			out.println("<tr><th>Salary</th><td><input type='Number' name='salary' value=" + emp.getSalary() + "></input></td></tr>");
+			out.println("</table>");
+			out.println("<input style='margin-top:10px' type='submit' value='Submit' />");
+			out.println("</center>");
+			out.println("</form>");
+		}else {
+			out.println("<center><h1 style='color:red'>Sorry did not found Employee with provided Id, please try again</h1></center>");
+		}
+		out.close();
 	}
 	
-	public void deleteEmployee(Long id , IEmployeeService employeeService) {
-		
+	public void deleteEmployee(Long id , IEmployeeService employeeService,HttpServletResponse response) throws IOException {
+		PrintWriter out = response.getWriter();
+		response.setContentType("text/html");
+		if(Objects.nonNull(id)) {
+			String output = employeeService.deleteEmployee(id);
+			if(Objects.nonNull(output) && Constants.SUCCESS.equalsIgnoreCase(output)) {
+				out.println("<center><h1 style='color:green'>Successfully deleted employee</h1></center>");
+			}else {
+				out.println("<center><h1 style='color:red'>Employee deletion has been failed, Might be employee Not found. please try again</h1></center>");
+			}
+		}
+		out.close();
 	}
 }

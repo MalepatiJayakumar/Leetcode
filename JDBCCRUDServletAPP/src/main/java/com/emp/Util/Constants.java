@@ -6,6 +6,8 @@ public class Constants {
 	
 	public static final String update = "update";
 	
+	public static final String edit = "edit";
+	
 	public static final String search = "search";
 	
 	public static final String delete = "delete";
