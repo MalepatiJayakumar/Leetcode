@@ -14,4 +14,14 @@
     <servlet-name>ServletContextAttributes</servlet-name>
     <url-pattern>/ServletContextAttributes</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ServletInfo</display-name>
+    <servlet-name>ServletInfo</servlet-name>
+    <servlet-class>com.practice.controller.ServletInfo</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletInfo</servlet-name>
+    <url-pattern>/ServletInfo</url-pattern>
+  </servlet-mapping>
 </web-app>
