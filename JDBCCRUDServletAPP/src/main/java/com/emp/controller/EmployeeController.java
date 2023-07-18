@@ -5,6 +5,7 @@ import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.Objects;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -38,7 +39,7 @@ public class EmployeeController extends HttpServlet {
 		}
 	}
 	
-	public void doProcess(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {
+	public void doProcess(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException, NumberFormatException, ServletException {
 		IEmployeeService employeeService = EmployeeServiceFactory.getEmployeeService();
 		String pathInfo = request.getPathInfo();
 		if (pathInfo.endsWith(Constants.add)) {
@@ -51,7 +52,7 @@ public class EmployeeController extends HttpServlet {
 			id = Long.parseLong(request.getParameter("empId"));
 			getEmployee(id,employeeService,response);
 		} else if (pathInfo.endsWith(Constants.delete)) {
-			deleteEmployee(Long.parseLong(request.getParameter("empId")),employeeService,response);
+			deleteEmployee(Long.parseLong(request.getParameter("empId")),employeeService,response,request);
 		}else if(pathInfo.endsWith(Constants.update)) {
 			Employee emp = new Employee(request.getParameter("name"), Integer.parseInt(request.getParameter("age")),
 					request.getParameter("address"), Double.parseDouble(request.getParameter("salary")));
@@ -128,15 +129,26 @@ public class EmployeeController extends HttpServlet {
 		out.close();
 	}
 	
-	public void deleteEmployee(Long id , IEmployeeService employeeService,HttpServletResponse response) throws IOException {
-		PrintWriter out = response.getWriter();
+	/**
+	 * @param id
+	 * @param employeeService
+	 * @param response
+	 * @param request
+	 * @throws IOException
+	 * @throws ServletException
+	 */
+	/* Shifted static Response to HTML pages , and to fetch response we are using RequestDispatcher*/
+	public void deleteEmployee(Long id , IEmployeeService employeeService,HttpServletResponse response , HttpServletRequest request) throws IOException, ServletException { PrintWriter out = response.getWriter();
+		RequestDispatcher reqDis = null;
 		response.setContentType("text/html");
 		if(Objects.nonNull(id)) {
 			String output = employeeService.deleteEmployee(id);
 			if(Objects.nonNull(output) && Constants.SUCCESS.equalsIgnoreCase(output)) {
-				out.println("<center><h1 style='color:green'>Successfully deleted employee</h1></center>");
+				reqDis = request.getRequestDispatcher("../deleteSuccess.html");
+				reqDis.forward(request,response);
 			}else {
-				out.println("<center><h1 style='color:red'>Employee deletion has been failed, Might be employee Not found. please try again</h1></center>");
+				reqDis = request.getRequestDispatcher("../deleteFailure.html");
+				reqDis.forward(request,response);
 			}
 		}
 		out.close();
