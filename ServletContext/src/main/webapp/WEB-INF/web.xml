@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
+  <context-param>
+    <param-name>url</param-name>
+    <param-value>jdbc:mysql:///localhost</param-value>
+  </context-param>
+  <context-param>
+    <param-name>username</param-name>
+    <param-value>root</param-value>
+  </context-param>
+  <context-param>
+    <param-name>password</param-name>
+    <param-value>Reddy@3816</param-value>
+  </context-param>
+  <servlet>
+    <servlet-name>TestServletContext</servlet-name>
+    <servlet-class>com.practice.controller.TestServletContext</servlet-class>
+    <!-- Lesser the load-on-startup value more the priority to load , So here TestServlet will be loaded earlier as compared to DispServlet-->
+    <load-on-startup>6</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>TestServletContext</servlet-name>
+    <url-pattern>/test</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>DispServlet</servlet-name>
+    <servlet-class>com.practice.controller.DispServlet</servlet-class>
+    <load-on-startup>5</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DispServlet</servlet-name>
+    <url-pattern>/disp</url-pattern>
+  </servlet-mapping>
+</web-app>
