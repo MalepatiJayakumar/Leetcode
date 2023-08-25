@@ -75,7 +75,7 @@
 	
 	
 	<!-- Getting all the Param with key value pair -->
-	<table border='1' style='color:cyan text-align:center' >
+	<table border='1' style='color:cyan; text-align:center' >
 		<tr>
 			<td>KEY</td>
 			<td>VALUE</td>
