@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- bean definitions here -->
+	<bean name="employee" class="com.practice.serviceImpl.EmployeeServiceImpl"/>
+	<bean name="student" class="com.practice.serviceImpl.StudentServiceImpl"/>	
+	<bean name="addUser" class="com.practice.controller.AddUsers">
+		<constructor-arg name="user" ref="student"/>
+	</bean>
+</beans>
