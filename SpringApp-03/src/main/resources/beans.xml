@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<bean id="java" class="com.practice.serviceImpl.JavaCourse" />
+	<bean id="python" class="com.practice.serviceImpl.PythonCourse" />
+	<bean id="react" class="com.practice.serviceImpl.ReactCourse" />
+	<bean id="select" class="com.practice.controller.SelectCourse">
+		<constructor-arg name="course" ref="java"/>
+	</bean>
+</beans>
