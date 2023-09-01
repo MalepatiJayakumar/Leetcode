@@ -47,7 +47,13 @@ public class Student {
 		System.out.println("Hibernate internally uses zero args constructor");
 	}
 	
-	
+	public Student(Long id, String name, Integer age) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.age = age;
+	}
+
 	@Override
 	public String toString() {
 		return "Student [id=" + id + ", name=" + name + ", age=" + age + "]";

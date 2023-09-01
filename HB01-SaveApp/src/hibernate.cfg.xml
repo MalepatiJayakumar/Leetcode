@@ -22,5 +22,6 @@
 		<!-- Inform HIBERNATE to create/alter/drop the table -->
 		<property name="hibernate.hbm2ddl.auto">create</property>
 		<mapping class="com.practice.entity.Student"/>
+		<mapping class="com.practice.entity.Employee"/>
 	</session-factory>
 </hibernate-configuration>
