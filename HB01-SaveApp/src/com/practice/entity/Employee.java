@@ -5,8 +5,11 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.DynamicInsert;
+
 @Entity
 @Table(name="org_employee")
+@DynamicInsert(value=true) // It won't use inbuilt query , creates an dynamic query post setting the values in an object
 public class Employee {
 	
 	@Id

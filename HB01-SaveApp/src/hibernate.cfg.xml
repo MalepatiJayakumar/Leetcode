@@ -20,7 +20,7 @@
 		<property name="hibernate.format_sql">true</property>
 
 		<!-- Inform HIBERNATE to create/alter/drop the table -->
-		<property name="hibernate.hbm2ddl.auto">create</property>
+		<property name="hibernate.hbm2ddl.auto">update</property>
 		<mapping class="com.practice.entity.Student"/>
 		<mapping class="com.practice.entity.Employee"/>
 	</session-factory>

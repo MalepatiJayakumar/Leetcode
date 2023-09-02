@@ -31,7 +31,7 @@ public class TestApp {
 				student.setName("sachin");
 
 				// 3. Perform PERISTENCE operation using Entity/Model/POJO object
-				session.save(student);
+				session.persist(student);
 
 				// 4. commit the operation based on the result
 				transaction.commit();
