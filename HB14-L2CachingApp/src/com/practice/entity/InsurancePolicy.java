@@ -1,7 +1,5 @@
 package com.practice.entity;
 
-import java.io.Serializable;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -11,13 +9,9 @@ import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 @Entity
-@Cache(usage = CacheConcurrencyStrategy.READ_ONLY) // These annotation to enable L2 cache for read only mode.
-public class InsurancePolicy implements Serializable{
-	
-	
-	private static final long serialVersionUID = 1L;
-	
-	@Id 
+@Cache(usage = CacheConcurrencyStrategy.READ_ONLY) // annotation to enable L2 cache for the entity
+public class InsurancePolicy {
+	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long policyNo;
 	private String policyName;

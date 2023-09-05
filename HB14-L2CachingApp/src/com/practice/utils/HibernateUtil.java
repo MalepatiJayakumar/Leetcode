@@ -5,29 +5,29 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
 public class HibernateUtil {
-
+	
 	private static SessionFactory sessionFactory = null;
 	private static Session session = null;
-
+	
 	static {
 		sessionFactory = new Configuration().configure().buildSessionFactory();
 	}
-
+	
 	public static Session getSession() {
-		if (session == null) {
+		if(session == null) {
 			session = sessionFactory.openSession();
 		}
 		return session;
 	}
-
-	public static void closeSession() {
-		if (session != null) {
+	
+	public static void closeSession()
+	{
+		if(session != null) {
 			session.close();
 		}
 	}
-
 	public static void closeSessionFactory() {
-		if (sessionFactory != null) {
+		if(sessionFactory != null) {
 			sessionFactory.close();
 		}
 	}
