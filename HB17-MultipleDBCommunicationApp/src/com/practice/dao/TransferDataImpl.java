@@ -30,8 +30,7 @@ public class TransferDataImpl implements ITransferData {
 					}catch(Exception e) {
 						e.printStackTrace();
 					}finally {
-						SakilaSchemaHibernateUtil.closeSession();
-						SakilaSchemaHibernateUtil.closeSessionFactory();
+						sakilaTransaction.commit();
 					}
 				}
 			}
