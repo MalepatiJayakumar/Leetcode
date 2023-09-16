@@ -9,7 +9,7 @@ public class TestApp {
 		/* Reading beans properties using spring xml application context */
 		ApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
 		
-		SelectCourse course = context.getBean("select",SelectCourse.class);
+		SelectCourse course = context.getBean("react",SelectCourse.class);
 		course.selectCourse();
 	}
 }
