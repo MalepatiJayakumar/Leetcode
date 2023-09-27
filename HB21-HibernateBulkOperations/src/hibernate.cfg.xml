@@ -42,6 +42,7 @@
 		<!-- Mapping should always be present at the end of the xml file otherwise 
 		it will give an error in hibernate.cfg.xml file -->
 		<mapping class="com.practice.entity.InsurancePolicy"/>
+		<mapping class="com.practice.entity.InsurancePolicyBackUp"/>
 		
 		
 	</session-factory>
