@@ -2,13 +2,17 @@ package com.practice.entity;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Version;
 
+import org.hibernate.annotations.Where;
+
 @Entity
+@Where(clause = "is_deleted = 0")
 public class InsurancePolicy implements Serializable{
 
 	private static final long serialVersionUID = 1L;
@@ -20,6 +24,9 @@ public class InsurancePolicy implements Serializable{
 	private Integer tenure;
 	@Version
 	private Integer versioncount;
+	
+	@Column(name="is_deleted")
+	private Integer isDeleted;
 	
 	public Long getId() {
 		return id;
@@ -50,6 +57,12 @@ public class InsurancePolicy implements Serializable{
 	}
 	public void setVersioncount(Integer versioncount) {
 		this.versioncount = versioncount;
+	}
+	public Integer getIsDeleted() {
+		return isDeleted;
+	}
+	public void setIsDeleted(Integer isDeleted) {
+		this.isDeleted = isDeleted;
 	}
 	@Override
 	public String toString() {
