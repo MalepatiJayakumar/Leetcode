@@ -9,15 +9,18 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Version;
 
+import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
 
 @Entity
 @Where(clause = "is_deleted = 0")
+@SQLDelete(sql = "update InsurancePolicy set isDeleted = 1 where id=:id")
 public class InsurancePolicy implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="policyNo")
 	private Long id;
 	private String policyName;
 	private String holderName;
