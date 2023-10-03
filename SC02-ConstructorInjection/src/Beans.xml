@@ -10,4 +10,28 @@
         	<constructor-arg name="date" ref="date" />
         </bean>
         
+        <!-- Different types of setting an values to constructor for constructor injection -->
+        <!-- 1. Using datatype of an field -->
+        <bean id="std1" class="com.practice.service.Student">
+        	<constructor-arg value="1" type="java.lang.Integer"/>
+        	<constructor-arg value="jai" type="java.lang.String"/>
+        	<constructor-arg value="Chandigarh University" type="java.lang.String"/>
+        	<constructor-arg value="79.9" type="java.lang.Float"/>
+        </bean>
+        
+        <!-- 2. Setting constructor using indexs -->
+        <bean id="std2" class="com.practice.service.Student">
+        	<constructor-arg index="0" value="2"/>
+        	<constructor-arg index="1" value="dhanush"/>
+        	<constructor-arg index="2" value="Apollo University"/>
+        	<constructor-arg index="3" value="85.8"/>
+        </bean>
+        
+        <!-- 3. Setting constructor value using names. Best suited without any exceptional cases -->
+        <bean id="std3" class="com.practice.service.Student">
+        	<constructor-arg name="id" value="3"/>
+        	<constructor-arg name="name" value="mahesh"/>
+        	<constructor-arg name="college" value="Sidhartha Engineering College"/>
+        	<constructor-arg name="percentage" value="68.8"/>
+        </bean>
 </beans>

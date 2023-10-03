@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+        
+        <bean id="blueDart" class="com.practice.couriers.BlueDart"/>
+        <bean id="delhivery" class="com.practice.couriers.Delhivery"/>
+        <bean id="dtdc" class="com.practice.couriers.DTDC"/>
+        
+        <bean id="flipkart" class="com.practice.service.Flipkart">
+        	<property name="courier" ref="delhivery"/>
+        	<property name="discount" value="10.0"/>
+        </bean>
+        
+</beans>
