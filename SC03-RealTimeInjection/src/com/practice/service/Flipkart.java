@@ -1,5 +1,7 @@
 package com.practice.service;
 
+import java.util.Random;
+
 public class Flipkart {
 	
 	private Float discount;
@@ -26,7 +28,14 @@ public class Flipkart {
 	public String doShopping(String[] items , Float[] prices) {
 		//Business logic
 		System.out.println("Flipkart.doShopping() :: has been called >> for courier :: "+courier.getClass().getName());
-		return "success";
+		
+		Float total = 0.0f;
+		for(Float price : prices) {
+			total+=price;
+		}
+		Integer orderId = new Random().nextInt(1000);
+		courier.doShipping(orderId,items);
+		return "Flipkart has intiated Delhivery for your product with Order id :: "+orderId;
 	}
 	
 }

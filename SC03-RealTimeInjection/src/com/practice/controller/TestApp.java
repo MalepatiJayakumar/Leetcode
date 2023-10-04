@@ -13,6 +13,7 @@ public class TestApp {
 		xmlReader.loadBeanDefinitions("Beans.xml");
 		
 		Flipkart flipkart = factory.getBean("flipkart",Flipkart.class);
-		flipkart.doShopping(new String[] {"Biscuits","Chacolates"},new Float[] {20.0f,34.9f});
+		String msg = flipkart.doShopping(new String[] {"Biscuits","Chacolates"},new Float[] {20.0f,34.9f});
+		System.out.println(msg);
 	}
 }
