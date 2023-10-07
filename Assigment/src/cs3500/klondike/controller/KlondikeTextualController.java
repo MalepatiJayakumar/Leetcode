@@ -114,7 +114,7 @@ public class KlondikeTextualController implements KlondikeController {
 					transmitGameState("State of game when quit:");
 					transmitGameState(ap.toString());
 					transmitGameState("Score: " + model.getScore());
-					return; // Exit the method
+					return;
 				default:
 					throw new IllegalArgumentException("Invalid command.");
 				}
@@ -142,7 +142,7 @@ public class KlondikeTextualController implements KlondikeController {
 	}
 	
 	private String getUserInput() {
-		System.out.println("Enter user input");
+		System.out.println("Enter user input"); //Just added for Testing purpose
 		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 	    StringBuilder input = new StringBuilder();
 	    try {
