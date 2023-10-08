@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+						https://www.springframework.org/schema/beans/spring-beans.xsd
+						http://www.springframework.org/schema/context
+						https://www.springframework.org/schema/context/spring-context.xsd">
+					
+						<!-- SETTER INHERITANCE -->
+			
+		   <!--	Here we are preparing an common properties data an spring bean inheritance, 
+				Note : its not an actual java inheritance its an spring bean level inheritance -->
+			<bean id="baseEmployeer" class="com.practice.setterInheritance.Employee" abstract="true">
+				<property name="orgName" value="HighRadius Pvt Technologies"/>
+				<property name="location" value="Hyderabad"/>
+				<property name="dept" value="Product"/>
+			</bean>
+
+		 <!-- As one or more employee can work for same employeer, we are using single 
+			  employeer object for multiple employees using spring bean inheritance -->
+			<bean id="emp1" class="com.practice.setterInheritance.Employee" parent="baseEmployeer">
+				<property name="id" value="1"/>
+				<property name="name" value="Jaikumar"/>
+				<property name="age" value="22"/>
+			</bean>
+			
+			<bean id="emp2" class="com.practice.setterInheritance.Employee" parent="baseEmployeer">
+				<property name="id" value="2"/>
+				<property name="name" value="Archi"/>
+				<property name="age" value="23"/>
+			</bean>	
+			
+			
+						<!-- CONSTRUCTOR INHERITANCE -->
+			<bean id="college" class="com.practice.constructorInheritance.Student" abstract ="true">
+				<constructor-arg name="college" value="Chandigarh University"/>
+				<constructor-arg name="location" value="Chandigarh"/>
+				<constructor-arg name="dept" value="Computer Science and Engineering"/>
+				<constructor-arg name="universityRank" value="1"/>
+			</bean>
+			
+			
+			<bean id="std1" class="com.practice.constructorInheritance.Student" parent="college">
+				<constructor-arg name="id" value="1"/>
+				<constructor-arg name="name" value="JayKumar Reddy"/>
+				<constructor-arg name="age" value="22"/>
+			</bean>
+			
+			<bean id="std2" class="com.practice.constructorInheritance.Student" parent="college">
+				<constructor-arg name="id" value="2"/>
+				<constructor-arg name="name" value="Tharun"/>
+				<constructor-arg name="age" value="23"/>
+			</bean>
+</beans>
