@@ -30,6 +30,7 @@ public class KlondikeTextualController implements KlondikeController {
 
   @Override
 	public void playGame(KlondikeModel model, List<Card> deck, boolean shuffle, int numPiles, int numDraw) {
+		long startTime = System.currentTimeMillis();
 		this.view = new KlondikeTextualView(model);
 		if (model == null) {
 			throw new IllegalArgumentException("Model cannot be null");
@@ -37,12 +38,14 @@ public class KlondikeTextualController implements KlondikeController {
 		model.startGame(deck, shuffle, numPiles, numDraw);
 		KlondikeTextualView klondikeTextualView = new KlondikeTextualView(model, ap);
 		try {
+			long startTimeForExecution = System.currentTimeMillis();
 			while (!model.isGameOver()) {
 				klondikeTextualView.render();
 				ap.append("\nScore: ").append(Integer.toString(model.getScore())).append("\n");
 				String userInput = scanner.nextLine();
 				processUserInput(model, userInput);
 			}
+			System.out.println("Time took for executing while loop in playgame :: "+(System.currentTimeMillis()-startTimeForExecution));
 			if (model.getScore() == model.getNumFoundations()) {
 				transmitGameState("You win!");
 			} else {
@@ -51,9 +54,11 @@ public class KlondikeTextualController implements KlondikeController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		System.out.println("Time took for playGame method :: " + (System.currentTimeMillis() - startTime));
 	}
 
 	public void processUserInput(KlondikeModel model, String userInput) throws Exception {
+		long startTime = System.currentTimeMillis();
 		boolean validInput = false;
 		while(!validInput) {
 			String[] token = userInput.split("\\s");
@@ -123,11 +128,12 @@ public class KlondikeTextualController implements KlondikeController {
 		         userInput = getUserInput();
 			}
 		}
+		System.out.println("Time took for processUserInput :: "+(System.currentTimeMillis()-startTime));
 	}
   
 	private void transmitGameState(String gameState) {
 		try {
-			ap.append(gameState).append("\n");
+			ap.append(gameState+"\n");
 		} catch (IOException e) {
 			throw new IllegalStateException("Error writing game state.", e);
 		}
@@ -141,22 +147,9 @@ public class KlondikeTextualController implements KlondikeController {
 	    }
 	}
 	
-	private String getUserInput() {
-		System.out.println("Enter user input"); //Just added for Testing purpose
+	private String getUserInput() throws IOException {
 		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-	    StringBuilder input = new StringBuilder();
-	    try {
-	        int nextChar;
-	        while ((nextChar = reader.read()) != -1) {
-	            char c = (char) nextChar;
-	            if (c == '\n') {
-	                break;
-	            }
-	            input.append(c);
-	        }
-	    } catch (IOException e) {
-	        throw new IllegalStateException("Error reading user input.", e);
-	    }
-	    return input.toString().trim();
+		return reader.readLine().trim();
 	}
+
 }
