@@ -8,7 +8,7 @@ public class Department {
 	private Date startDate;
 
 	public Department(Integer dNo, String dName, Date startDate) {
-		super();
+		System.out.println("Department.Department()");
 		this.dNo = dNo;
 		this.dName = dName;
 		this.startDate = startDate;

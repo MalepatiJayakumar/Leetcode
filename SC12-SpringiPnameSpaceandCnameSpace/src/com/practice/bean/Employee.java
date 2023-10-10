@@ -7,13 +7,7 @@ public class Employee {
 	private String name;
 	private Date doj;
 	private Department department;
-	public Employee(Integer empId, String name, Date doj, Department department) {
-		super();
-		this.empId = empId;
-		this.name = name;
-		this.doj = doj;
-		this.department = department;
-	}
+	
 	public Integer getEmpId() {
 		return empId;
 	}

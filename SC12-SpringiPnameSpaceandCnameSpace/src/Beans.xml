@@ -10,5 +10,8 @@
 						https://www.springframework.org/schema/context/spring-context.xsd">
 	
 		<bean name="doj" class="java.util.Date" p:year="2018" p:month="07" p:date="07" />
-	
+		<bean name="startDate" class="java.util.Date" p:year="2012" p:month="07" p:date="07" />
+		
+		<bean name="department" class="com.practice.bean.Department" c:dNo="1" c:dName="CSE" c:startDate-ref="startDate" />
+		<bean name="employee" class="com.practice.bean.Employee" p:empId="1061" p:name="jaikumar" p:doj-ref="doj" p:department-ref="department"/>
 </beans>
