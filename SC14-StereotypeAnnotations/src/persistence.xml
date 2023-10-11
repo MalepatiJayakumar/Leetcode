@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+						https://www.springframework.org/schema/beans/spring-beans.xsd
+						http://www.springframework.org/schema/context
+						https://www.springframework.org/schema/context/spring-context.xsd">
+	<context:property-placeholder location="db.properties" />
+	<bean id="ds" class="org.springframework.jdbc.datasource.DriverManagerDataSource" abstract="true">
+		<property name="driverClassName" value="${driverClassName}" />
+		<property name="username" value="root" />
+		<property name="password" value="${password}" />
+	</bean>
+
+	<bean id="hikariDataSource"
+		class="com.zaxxer.hikari.HikariDataSource" parent="ds">
+		<property name="jdbcUrl" value="${url}" />
+		<property name="minimumIdle" value="10" />
+		<property name="maximumPoolSize" value="20" />
+	</bean>
+
+	<!-- <context:annotation-config/> -->
+
+	<context:component-scan
+		base-package="com.practice"></context:component-scan>
+
+</beans>
