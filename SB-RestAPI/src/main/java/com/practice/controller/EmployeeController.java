@@ -14,9 +14,9 @@ import com.practice.dto.EmployeeDTO;
 public class EmployeeController {
 
 	@RequestMapping(value="/save/{id}" ,  method = RequestMethod.GET , produces= {"application/json"} , consumes= {"application/json"})
+	//                           Path param            Query Param                       Request DTO
 	public EmployeeDTO save(@PathVariable Long id , @RequestParam String name , @RequestBody EmployeeDTO emp) {
 		System.out.println(emp);
-		// String name, String organization, String location, Double salary
 		return new EmployeeDTO(name, "HRC", "HYD", 15000.00d);
 	}
 }
