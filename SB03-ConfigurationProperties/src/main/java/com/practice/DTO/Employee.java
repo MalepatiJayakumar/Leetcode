@@ -4,6 +4,8 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 
 /**
+ * BULK PROPERTIES LOADING
+ * =======================
  * Reads all the data from application.properties ,if we want to read from any
  * other properties file then we need to mention that filePath
  * using @PropertySource(value="path") , And we need to give commom path like
