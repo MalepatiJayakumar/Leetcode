@@ -11,7 +11,7 @@ public class Sb03ConfigurationPropertiesApplication {
 
 	public static void main(String[] args) {
 		ApplicationContext context = SpringApplication.run(Sb03ConfigurationPropertiesApplication.class, args);
-		Employee emp1 = context.getBean(Employee.class);
+		Employee emp1 =  context.getBean(Employee.class);
 		System.out.println(emp1);
 	}
 }
