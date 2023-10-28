@@ -1,10 +1,8 @@
 package com.hrc.dto;
 
-import java.io.Serializable;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
-public class EmployeeDTO implements Serializable{
-	
-	private static final long serialVersionUID = 1L;
+public class EmployeeDTO{
 	
 	private Long id;
 	private String name;

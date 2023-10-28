@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.highradius.dao.IEmployeeDAO;
+import com.highradius.helper.Helper;
+import com.hrc.dto.EmployeeDTO;
 
 @Service
 public class EmployeeServiceImpl implements IEmployeeService {
@@ -17,5 +19,11 @@ public class EmployeeServiceImpl implements IEmployeeService {
 	@Override
 	public List<Map<String, Object>> getAllEmployees() {
 		return employeeDAO.getAllEmployees();
+	}
+
+	@Override
+	public void updateEmployee(EmployeeDTO employee) {
+		Helper.updateEmployeeRequest(Helper.convertMapToEmployeeDTO(employeeDAO.getEmployee(employee.getId())),employee);
+		employeeDAO.updateEmployee(employee);
 	}
 }
