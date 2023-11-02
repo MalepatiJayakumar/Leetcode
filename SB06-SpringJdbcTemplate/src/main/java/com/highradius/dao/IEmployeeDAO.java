@@ -9,4 +9,5 @@ public interface IEmployeeDAO {
 	public List<Map<String,Object>> getAllEmployees();
 	public void updateEmployee(EmployeeDTO employee);
 	public Map<String,Object> getEmployee(Long id);
+	public EmployeeDTO getEmployeeByIdUsingMapper(Long id);
 }
