@@ -3,6 +3,7 @@ package com.highradius.controller;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,11 +20,14 @@ import com.hrc.dto.EmployeeDTO;
 @RequestMapping("/employee")
 public class EmployeeController {
 
+	private Logger logger = Logger.getLogger(EmployeeController.class);
+	
 	@Autowired
 	private IEmployeeService employeeService;
 
 	@RequestMapping(value = "/all", method = RequestMethod.GET)
 	public ResponseEntity<List<Map<String, Object>>> getAllEmployees() {
+		logger.debug("Inside EmployeeController method getAllEmployees() ");
 		return new ResponseEntity<>(employeeService.getAllEmployees(), HttpStatus.OK);
 	}
 

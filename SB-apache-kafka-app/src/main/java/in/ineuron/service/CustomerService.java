@@ -1,5 +1,7 @@
 package in.ineuron.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.kafka.core.KafkaTemplate;
@@ -28,9 +30,8 @@ public class CustomerService {
 	 * @return
 	 */
 	public String add(Customer customer) {
-
 		kafkaTemplate.send(KafkaConstants.TOPIC, customer);
-		System.out.println("************Msg published to Kafka topic***************" + customer);
+		System.out.println("************Msg published to Kafka topic***************");
 		return "Customer Records Added To Kafka Queue Successfully";
 	}
 
@@ -43,16 +44,7 @@ public class CustomerService {
 	@KafkaListener(topics = KafkaConstants.TOPIC, groupId = KafkaConstants.GROUP_ID)
 	public Customer listener(Customer c) {
 		System.out.println("***Msg recieved from Kafka Topic ::" + c);
+		//saving logic
 		return c;
 	}
-/**
- * spring.kafka.consumer.bootstrap-servers=localhost:9092
-spring.kafka.consumer.group-id=my-group
-spring.kafka.consumer.key-deserializer=org.apache.kafka.common.serialization.StringDeserializer
-spring.kafka.consumer.value-deserializer=org.springframework.kafka.support.serializer.ErrorHandlingDeserializer
-spring.kafka.consumer.properties.spring.json.trusted.packages=*
-
- */
-	
-	
 }

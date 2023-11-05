@@ -11,6 +11,8 @@ import in.ineuron.service.CustomerService;
 /**
  * This class is used to handle user requests
  * 
+ * @author Nitin
+ *
  */
 @RestController
 public class CustomerRestController {
@@ -24,8 +26,9 @@ public class CustomerRestController {
 	 * @param customers
 	 * @return
 	 */
-	@PostMapping(value = "/addCustomer" )
-	public String addCustomer(@RequestBody Customer customers) {
-		return customerService.add(customers);
+	@PostMapping(value = "/addCustomer")
+	public String addCustomer(@RequestBody Customer customer) {
+		System.out.println("CustomerRestController.addCustomer() >> "+customer);
+		return customerService.add(customer);
 	}
 }
