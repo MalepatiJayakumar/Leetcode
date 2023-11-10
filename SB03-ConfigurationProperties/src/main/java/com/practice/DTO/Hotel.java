@@ -25,5 +25,4 @@ public class Hotel {
 		return "Hotel [billAmout=" + billAmout + ", hotelName=" + hotelName + ", location=" + location + ", items="
 				+ items + "]";
 	}
-	
 }

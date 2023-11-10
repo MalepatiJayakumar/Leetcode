@@ -44,7 +44,6 @@ public class TestServletObject extends HttpServlet{
 	}
 }
 
-
 /*
 Uses the same servlet object 
 (Browser :- FireFox)
