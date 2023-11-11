@@ -21,7 +21,7 @@ public class CovidVaccine {
 	private Double price;
 	
 	public CovidVaccine() {
-		super();
+		System.out.println("CovidVaccine.CovidVaccine()");
 	}
 
 	public CovidVaccine(Long id, String vaccineType, String companyName, String country, Double price) {
