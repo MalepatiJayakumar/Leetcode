@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.highradius.dto.CovidVaccineDTO;
 import com.highradius.service.VaccineService;
+import com.highradius.type.ResultView;
 
 @RestController
 @RequestMapping("/vaccine")
@@ -49,4 +50,10 @@ public class VaccineController {
 	public ResponseEntity<List<CovidVaccineDTO>> getVaccinesForACompany(@PathVariable String companyName){
 		return ResponseEntity.ok().body(vaccineService.getVaccinesForACompany(companyName));	
 	}
+	
+	@RequestMapping(value="/get-vaccines-for-a-country/{country}",method=RequestMethod.GET)
+	public ResponseEntity<Iterable<ResultView>> getRequestData(@PathVariable String country){
+		return ResponseEntity.ok().body(vaccineService.getRequestData(country));
+	}
+	
 }

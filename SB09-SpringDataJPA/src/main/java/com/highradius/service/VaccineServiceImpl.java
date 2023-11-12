@@ -14,6 +14,7 @@ import com.highradius.entity.CovidVaccine;
 import com.highradius.repository.VaccineJPARepo;
 import com.highradius.repository.VaccineRepo;
 import com.highradius.repository.VaccineRepoPagination;
+import com.highradius.type.ResultView;
 
 @Service
 public class VaccineServiceImpl implements VaccineService {
@@ -75,5 +76,9 @@ public class VaccineServiceImpl implements VaccineService {
 			vaccines.add(vaccine);
 		}
 		return vaccines;
+	}
+	@Override
+	public Iterable<ResultView> getRequestData(String country) {
+		return vaccineJpaRepo.findByCountry(country);
 	}
 }
