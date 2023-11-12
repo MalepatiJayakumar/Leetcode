@@ -17,6 +17,10 @@ import com.highradius.service.VaccineService;
 @RequestMapping("/vaccine")
 public class VaccineController {
 
+	/**
+	 * For Pagination we can use Pageable object in same PagingAndSortingRepository Object
+	 */
+	
 	@Autowired
 	private VaccineService vaccineService;
 
@@ -40,7 +44,9 @@ public class VaccineController {
 	public ResponseEntity<List<CovidVaccineDTO>> getVaccinesOnSortedOrder(@PathVariable String order,@RequestBody List<String> properties) {
 		return ResponseEntity.ok().body(vaccineService.getVaccinesOnSortedOrder(order, properties));
 	}
-	/**
-	 * For Pagination we can use Pageable object in same PagingAndSortingRepository Object
-	 */
+	
+	@RequestMapping(value="/get-vaccines-for-a-company/{companyName}",method=RequestMethod.GET)
+	public ResponseEntity<List<CovidVaccineDTO>> getVaccinesForACompany(@PathVariable String companyName){
+		return ResponseEntity.ok().body(vaccineService.getVaccinesForACompany(companyName));	
+	}
 }

@@ -9,4 +9,5 @@ public interface VaccineService {
 	public List<CovidVaccineDTO> getAllVaccines();
 	public Long getVaccineCount();
 	public List<CovidVaccineDTO> getVaccinesOnSortedOrder(String order, List<String> properties);
+	public List<CovidVaccineDTO> getVaccinesForACompany(String companyName);
 }

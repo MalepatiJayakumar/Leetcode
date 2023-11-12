@@ -5,12 +5,13 @@ import java.util.List;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.domain.Sort.Direction;
+import org.springframework.stereotype.Service;
 
 import com.highradius.dto.CovidVaccineDTO;
 import com.highradius.entity.CovidVaccine;
+import com.highradius.repository.VaccineJPARepo;
 import com.highradius.repository.VaccineRepo;
 import com.highradius.repository.VaccineRepoPagination;
 
@@ -22,6 +23,9 @@ public class VaccineServiceImpl implements VaccineService {
 	
 	@Autowired
 	private VaccineRepoPagination vaccineRepo1;
+	
+	@Autowired
+	private VaccineJPARepo vaccineJpaRepo;
 
 	@Override
 	public void saveCovidVaccineProvider(CovidVaccineDTO vaccine) {
@@ -52,6 +56,18 @@ public class VaccineServiceImpl implements VaccineService {
 		Sort sort = Sort.by(order != null && "ASC".equalsIgnoreCase(order) ? Direction.ASC : Direction.DESC,
 				properties.toArray(new String[properties.size()]));
 		Iterable<CovidVaccine> vaccineEntities = vaccineRepo1.findAll(sort);
+		List<CovidVaccineDTO> vaccines = new ArrayList<>();
+		for (CovidVaccine vaccineEntity : vaccineEntities) {
+			CovidVaccineDTO vaccine = new CovidVaccineDTO();
+			BeanUtils.copyProperties(vaccineEntity, vaccine);
+			vaccines.add(vaccine);
+		}
+		return vaccines;
+	}
+
+	@Override
+	public List<CovidVaccineDTO> getVaccinesForACompany(String companyName) {
+		Iterable<CovidVaccine> vaccineEntities = vaccineJpaRepo.findByCompanyName(companyName);
 		List<CovidVaccineDTO> vaccines = new ArrayList<>();
 		for (CovidVaccine vaccineEntity : vaccineEntities) {
 			CovidVaccineDTO vaccine = new CovidVaccineDTO();
