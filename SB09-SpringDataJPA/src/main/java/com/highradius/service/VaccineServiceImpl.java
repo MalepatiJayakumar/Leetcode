@@ -14,7 +14,9 @@ import com.highradius.entity.CovidVaccine;
 import com.highradius.repository.VaccineJPARepo;
 import com.highradius.repository.VaccineRepo;
 import com.highradius.repository.VaccineRepoPagination;
-import com.highradius.type.ResultView;
+import com.highradius.type.ResultView1;
+import com.highradius.type.ResultView2;
+import com.highradius.type.View;
 
 @Service
 public class VaccineServiceImpl implements VaccineService {
@@ -78,7 +80,13 @@ public class VaccineServiceImpl implements VaccineService {
 		return vaccines;
 	}
 	@Override
-	public Iterable<ResultView> getRequestData(String country) {
+	public Iterable<ResultView1> getRequestData(String country) {
 		return vaccineJpaRepo.findByCountry(country);
 	}
+/*
+	@Override
+	public Iterable<View> getVaccinesOnPrice(Double price, String className) {
+		return vaccineJpaRepo.findByPrice(price, ResultView2.class);
+	}
+	*/
 }

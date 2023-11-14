@@ -12,7 +12,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.highradius.dto.CovidVaccineDTO;
 import com.highradius.service.VaccineService;
-import com.highradius.type.ResultView;
+import com.highradius.type.ResultView1;
+import com.highradius.type.View;
 
 @RestController
 @RequestMapping("/vaccine")
@@ -52,8 +53,14 @@ public class VaccineController {
 	}
 	
 	@RequestMapping(value="/get-vaccines-for-a-country/{country}",method=RequestMethod.GET)
-	public ResponseEntity<Iterable<ResultView>> getRequestData(@PathVariable String country){
+	public ResponseEntity<Iterable<ResultView1>> getRequestData(@PathVariable String country){
 		return ResponseEntity.ok().body(vaccineService.getRequestData(country));
 	}
 	
+	/*
+	@RequestMapping(value="/get-based-on-price/{price}/{className}", method=RequestMethod.GET)
+	public ResponseEntity<Iterable<View>> getVaccinesOnPrice(@PathVariable Double price,String className){
+		return ResponseEntity.ok().body(vaccineService.getVaccinesOnPrice(price,className));
+	}
+	*/
 }
