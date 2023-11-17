@@ -9,5 +9,4 @@ public class Sb10SpringDataJpaLobApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(Sb10SpringDataJpaLobApplication.class, args);
 	}
-
 }

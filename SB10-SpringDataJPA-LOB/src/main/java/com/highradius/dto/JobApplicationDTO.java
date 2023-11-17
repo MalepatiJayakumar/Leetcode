@@ -4,10 +4,12 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
+import springfox.documentation.annotations.ApiIgnore;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@ApiIgnore
 public class JobApplicationDTO {
 	private Long id;
 	@NonNull
