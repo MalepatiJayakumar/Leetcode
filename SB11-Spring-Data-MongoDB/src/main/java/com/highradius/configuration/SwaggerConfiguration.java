@@ -19,12 +19,12 @@ public class SwaggerConfiguration {
 	@Bean
 	public Docket api() {
 		return new Docket(DocumentationType.SWAGGER_2).select()
-				.apis(RequestHandlerSelectors.basePackage("com.highradius")).paths(PathSelectors.any())
-				.build().apiInfo(getApiInfo());
+				.apis(RequestHandlerSelectors.basePackage("com.highradius")).paths(PathSelectors.any()).build()
+				.apiInfo(getApiInfo());
 	}
 
 	private ApiInfo getApiInfo() {
-		return new ApiInfo("Job Application API", "One Stop Solution for Jobs", "1.0", "Free To Use",
+		return new ApiInfo("Customer Details", "One Stop Solution for Customers", "1.0", "Free To Use",
 				new springfox.documentation.service.Contact("Jayakumar", "https://www.linkedin.com/in/jayakumarreddy/",
 						"malepatikayakumarreddy316@gmail.com"),
 				"API License", "https://www.linkedin.com/in/jayakumarreddy/", Collections.emptyList());
