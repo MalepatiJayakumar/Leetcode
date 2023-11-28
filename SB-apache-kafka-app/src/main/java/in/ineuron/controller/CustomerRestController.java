@@ -8,12 +8,6 @@ import org.springframework.web.bind.annotation.RestController;
 import in.ineuron.model.Customer;
 import in.ineuron.service.CustomerService;
 
-/**
- * This class is used to handle user requests
- * 
- * @author Nitin
- *
- */
 @RestController
 public class CustomerRestController {
 

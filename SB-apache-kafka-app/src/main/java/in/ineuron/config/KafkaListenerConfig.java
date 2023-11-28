@@ -16,12 +16,6 @@ import org.springframework.kafka.support.serializer.JsonDeserializer;
 import in.ineuron.model.Customer;
 import in.ineuron.util.KafkaConstants;
 
-/**
- * 
- * @author Nitin
- *
- */
-
 @Configuration
 @EnableKafka
 public class KafkaListenerConfig {

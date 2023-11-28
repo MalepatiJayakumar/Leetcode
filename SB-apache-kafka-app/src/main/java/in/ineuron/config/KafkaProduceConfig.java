@@ -14,12 +14,6 @@ import org.springframework.kafka.support.serializer.JsonSerializer;
 
 import in.ineuron.model.Customer;
 import in.ineuron.util.KafkaConstants;
-
-/**
- * 
- * @author Nitin
- *
- */
 @Configuration
 public class KafkaProduceConfig {
 
@@ -29,6 +23,7 @@ public class KafkaProduceConfig {
 	 * @return
 	 */
 
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@Bean
 	public ProducerFactory<String, Customer> producerFactory() {
 		Map<String, Object> configProps = new HashMap<String, Object>();

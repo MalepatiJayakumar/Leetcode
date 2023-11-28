@@ -6,9 +6,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-/**
- * @author nitin This class holds Model data
- */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
