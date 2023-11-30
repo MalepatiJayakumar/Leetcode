@@ -22,17 +22,17 @@ public class TransactionManagement {
 //	}
 	
 //	@Before("execution(* com.highradius.service.EmployeeService.getEmployee() && @annotation(CustomAnnotation))")
-	@Before("@annotation(com.highradius.annotation.CustomAnnotation)")
+	@Before("@annotation(com.highradius.annotation.AccountLocalThreadManagement)")
 	public void doAccessCheck() {
 		ThreadContext.put("accountId","1");
 		System.out.println("TransactionManagement.doAccessCheck()");
 	}
 	
-	@After("@annotation(com.highradius.annotation.CustomAnnotation)")
+	@After("@annotation(com.highradius.annotation.AccountLocalThreadManagement)")
 	public void postCheck() {
-		System.out.println("TransactionManagement.postCheck() >> "+ThreadContext.get("accountId"));
-		ThreadContext.put("accountId","");
-		System.out.println("TransactionManagement.postCheck() >> post clearing :: "+ThreadContext.get("accountId"));
+		System.out.println("TransactionManagement.postCheck() >> " + ThreadContext.get("accountId"));
+		ThreadContext.put("accountId", "");
+		System.out.println("TransactionManagement.postCheck() >> post clearing :: " + ThreadContext.get("accountId"));
 	}
 	
 //	
