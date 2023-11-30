@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.highradisu.generator.IDGenerator;
 import com.highradius.dtos.CustomerDTO;
@@ -47,6 +48,7 @@ public class CustomerServiceImpl implements ICustomerService {
 	}
 
 	@Override
+	@Transactional
 	public CustomerDTO updateCustomer(CustomerDTO customerDTO) {
 		if (customerDTO.getId() == null) {
 			customerDTO.setId(IDGenerator.generateId());
