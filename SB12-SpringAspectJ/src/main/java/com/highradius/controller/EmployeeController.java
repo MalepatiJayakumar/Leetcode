@@ -19,4 +19,9 @@ public class EmployeeController {
 	public ResponseEntity<String> getEmployee() throws Exception {
 		return new ResponseEntity<>(employeeService.getEmployee(), HttpStatus.OK);
 	}
+	
+	@RequestMapping(value="get-employee/{id}", method =RequestMethod.GET)
+	public ResponseEntity<String> getEmployeeOnId(Long id){
+		return new ResponseEntity<>(employeeService.getEmployeeOnId(),HttpStatus.OK);
+	}
 }
