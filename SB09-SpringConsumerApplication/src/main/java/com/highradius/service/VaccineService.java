@@ -7,4 +7,6 @@ import com.highradius.dto.CovidVaccineDTO;
 public interface VaccineService {
 	
 	public List<CovidVaccineDTO> getCountryVaccines(String country);
+
+	public List<CovidVaccineDTO> getVaccinesOnSortedOrder();
 }

@@ -24,4 +24,9 @@ public class VaccineController {
 	public ResponseEntity<List<CovidVaccineDTO>> getCountryVaccines(@PathVariable String country) {
 		return new ResponseEntity<>(vaccineService.getCountryVaccines(country), HttpStatus.OK);
 	}
+	
+	@RequestMapping(value = "/get-on-default-sorted-order", method = RequestMethod.GET)
+	public ResponseEntity<List<CovidVaccineDTO>> getVaccinesOnSortedOrder() {
+		return ResponseEntity.ok().body(vaccineService.getVaccinesOnSortedOrder());
+	}
 }
