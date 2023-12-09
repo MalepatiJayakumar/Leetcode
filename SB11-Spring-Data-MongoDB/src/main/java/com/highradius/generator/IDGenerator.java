@@ -1,4 +1,4 @@
-package com.highradisu.generator;
+package com.highradius.generator;
 
 import java.util.UUID;
 

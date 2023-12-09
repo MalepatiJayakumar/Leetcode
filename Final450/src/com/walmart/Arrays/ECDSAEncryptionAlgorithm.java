@@ -7,17 +7,30 @@ import java.util.Base64;
 public class ECDSAEncryptionAlgorithm {
 	public static void main(String[] args) throws Exception {
 		String originalString = "Hello, ECDSA Signing!";
-		System.out.println(signECDSA(originalString, generateECDSAKeyPair().getPrivate()));
+		
+		//ECDSA -256
+//		String key = "secp256r1";
+//		String instance = "SHA256withECDSA";
+		
+		//ECDSA - 384
+//		String key = "secp384r1";
+//		String instance = "SHA384withECDSA";
+		
+		//ECDSA - 521
+		String key = "secp521r1";
+		String instance = "SHA512withECDSA";
+		
+		System.out.println(signECDSA(originalString, generateECDSAKeyPair(key).getPrivate(),instance));
 	}
 
-	private static KeyPair generateECDSAKeyPair() throws Exception {
+	private static KeyPair generateECDSAKeyPair(String key) throws Exception {
 		KeyPairGenerator keyPairGenerator = KeyPairGenerator.getInstance("EC");
-		keyPairGenerator.initialize(new ECGenParameterSpec("secp256r1"));
+		keyPairGenerator.initialize(new ECGenParameterSpec(key));
 		return keyPairGenerator.generateKeyPair();
 	}
 
-	private static String signECDSA(String originalString, PrivateKey privateKey) throws Exception {
-		Signature ecdsa = Signature.getInstance("SHA256withECDSA");
+	private static String signECDSA(String originalString, PrivateKey privateKey, String instance) throws Exception {
+		Signature ecdsa = Signature.getInstance(instance);
 		ecdsa.initSign(privateKey);
 		ecdsa.update(originalString.getBytes());
 		return Base64.getEncoder().encodeToString(ecdsa.sign());
