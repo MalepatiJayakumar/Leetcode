@@ -42,5 +42,4 @@ public class KafkaProduceConfig {
 	public KafkaTemplate<String, Customer> kafkaTemplate() {
 		return new KafkaTemplate<>(producerFactory());
 	}
-
 }
