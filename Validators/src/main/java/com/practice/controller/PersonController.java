@@ -1,5 +1,6 @@
 package com.practice.controller;
 
+import java.time.LocalDate;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -28,5 +29,10 @@ public class PersonController {
 		}
 		return new ResponseEntity<String>(validations.stream().collect(Collectors.joining("\n")),
 				HttpStatus.BAD_REQUEST);
+	}
+
+	@RequestMapping(method = RequestMethod.GET)
+	public ResponseEntity<PersonDTO> test() {
+		return new ResponseEntity<PersonDTO>(new PersonDTO(LocalDate.now()), HttpStatus.OK);
 	}
 }

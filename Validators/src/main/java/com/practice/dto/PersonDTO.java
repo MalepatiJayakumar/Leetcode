@@ -1,5 +1,7 @@
 package com.practice.dto;
 
+import java.time.LocalDate;
+
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
@@ -29,4 +31,10 @@ public class PersonDTO {
 
 	@NotNull(message="Phone Number should not be null")
 	private Integer phoneNo;
+	
+	private LocalDate localDate;
+	
+	public PersonDTO(LocalDate localDate) {
+		this.localDate = localDate;
+	}
 }
