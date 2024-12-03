@@ -1,13 +1,12 @@
-package com.practice;
+package com.audit;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class TodoAppApplication {
+public class AuditServiceApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(TodoAppApplication.class, args);
+		SpringApplication.run(AuditServiceApplication.class, args);
 	}
-
 }
