@@ -10,14 +10,10 @@ import javax.sql.DataSource;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.env.EnvironmentPostProcessor;
-import org.springframework.boot.logging.LogLevel;
-import org.springframework.boot.logging.LoggingSystem;
 import org.springframework.core.env.ConfigurableEnvironment;
 import org.springframework.core.env.MapPropertySource;
 
 public class DatabasePropertyEnvironmentPostProcessor implements EnvironmentPostProcessor {
-
-	private static final String LOGGING_PREFIX = "logging.level.";
 
 	@Override
 	public void postProcessEnvironment(ConfigurableEnvironment environment, SpringApplication application) {
@@ -28,26 +24,17 @@ public class DatabasePropertyEnvironmentPostProcessor implements EnvironmentPost
 				Statement statement = connection.createStatement();
 				ResultSet resultSet = statement
 						.executeQuery("SELECT property_key, property_value FROM app_properties")) {
-
+			
 			while (resultSet.next()) {
 				String key = resultSet.getString("property_key");
 				String value = resultSet.getString("property_value");
 				propertyMap.put(key, value);
-
-				if (key.startsWith(LOGGING_PREFIX)) {
-					String loggerName = key.substring(LOGGING_PREFIX.length());
-					LoggingSystem loggingSystem = LoggingSystem.get(ClassLoader.getSystemClassLoader());
-					loggingSystem.setLogLevel(loggerName, LogLevel.valueOf(value));
-				}
 			}
 		} catch (Exception e) {
 			throw new RuntimeException("Failed to load properties from the database", e);
 		}
-
-		MapPropertySource propertySource = new MapPropertySource("databaseProperties", propertyMap);
+		MapPropertySource propertySource = new MapPropertySource("externalProperties", propertyMap);
 		environment.getPropertySources().addFirst(propertySource);
-
-		System.out.println("Database properties loaded and applied at EnvironmentPostProcessor stage.");
 	}
 
 	private DataSource getDataSource(ConfigurableEnvironment environment) {
